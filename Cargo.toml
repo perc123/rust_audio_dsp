@@ -1,0 +1,10 @@
+[package]
+name = "rust_audio_dsp"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "staticlib"]  # Needed to export to C/C++
+
+[dependencies]
+biquad = "0.4"  # DSP filter crate (used for EQ)
