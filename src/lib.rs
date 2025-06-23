@@ -12,11 +12,10 @@ pub extern "C" fn eq_filter_create(
     gain_db: f32
 ) -> *mut EQFilter {
     let coeffs = Coefficients::<f32>::from_params(
-        Type::LowShelf,
+        Type::LowShelf(gain_db),     // pass gain here
         sample_rate.hz(),
         cutoff_hz.hz(),
-        Q_BUTTERWORTH_F32,
-        gain_db,
+        Q_BUTTERWORTH_F32
     ).unwrap();
 
     let filter = DirectForm1::<f32>::new(coeffs);
